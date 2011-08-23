@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/gwt-0.5.2">
+      <sourceFolder url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/gwt-0.5.2/src/java" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/gwt-0.5.2/src/gwt" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/gwt-0.5.2/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/gwt-0.5.2/grails-app/controllers" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/gwt-0.5.2/grails-app/services" isTestSource="false" />
+      <excludeFolder url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/gwt-0.5.2/target/classes" />
+      <excludeFolder url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/gwt-0.5.2/target/test-classes" />
+      <excludeFolder url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/gwt-0.5.2/web-app/plugins" />
+    </content>
+    <content url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/hibernate-1.3.7">
+      <excludeFolder url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/hibernate-1.3.7/target/classes" />
+      <excludeFolder url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/hibernate-1.3.7/target/test-classes" />
+      <excludeFolder url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/hibernate-1.3.7/web-app/plugins" />
+    </content>
+    <content url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/tomcat-1.3.7">
+      <sourceFolder url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/tomcat-1.3.7/src/groovy" isTestSource="false" />
+      <excludeFolder url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/tomcat-1.3.7/target/classes" />
+      <excludeFolder url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/tomcat-1.3.7/target/test-classes" />
+      <excludeFolder url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/tomcat-1.3.7/web-app/plugins" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="grails-1.3.7" level="application" />
+    <orderEntry type="module-library" exported="">
+      <library name="Grails User Library (devooght-grailsPlugins)">
+        <CLASSES>
+          <root url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/gwt-0.5.2/lib" />
+          <root url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/tomcat-1.3.7/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/gwt-0.5.2/lib" recursive="false" />
+        <jarDirectory url="file://$USER_HOME_GRAILS$/1.3.7/projects/devooght/plugins/tomcat-1.3.7/lib" recursive="false" />
+      </library>
+    </orderEntry>
+  </component>
+</module>
+
