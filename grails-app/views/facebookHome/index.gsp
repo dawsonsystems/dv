@@ -9,8 +9,9 @@
 
         body {
             background: #000;
-            width:900px;
+            width:510px;
             height:750px;
+            color:#fff;
         }
 
       #mainFlow .flow {
@@ -23,8 +24,8 @@
 
   </head>
   <body>
-
-   <div style="width:900%; height:160px; ;margin: 0">
+        WIBBLE MUNCHER
+   <%--<div style="width:900%; height:160px; ;margin: 0">
    <div class="ContentFlow" id="mainFlow">
 
     <div class="flow">
@@ -41,6 +42,6 @@
 
      <script>
             var myNewFlow = new ContentFlow('mainFlow', { reflectionHeight: 20, circularFlow: true } ) ;
-     </script>
+     </script>--%>
   </body>
 </html>

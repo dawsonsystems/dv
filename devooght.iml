@@ -17,19 +17,28 @@
         <sourceRoots />
       </configuration>
     </facet>
+    <facet type="gwt" name="GWT">
+      <configuration>
+        <setting name="compilerMaxHeapSize" value="128" />
+        <setting name="gwtScriptOutputStyle" value="DETAILED" />
+        <setting name="gwtSdkUrl" value="file://$MODULE_DIR$/target/gwt/tempHome" />
+        <setting name="webFacet" value="GrailsWeb" />
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/grails-app/utils" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/groovy" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/grails-app/controllers" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test/unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test/integration" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/grails-app/utils" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/grails-app/domain" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/grails-app/services" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/grails-app/taglib" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/test/unit" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/test/integration" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/gwt" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target/classes" />
       <excludeFolder url="file://$MODULE_DIR$/target/test-classes" />
       <excludeFolder url="file://$MODULE_DIR$/web-app/plugins" />
@@ -41,6 +50,13 @@
       <library name="Grails User Library (devooght)">
         <CLASSES>
           <root url="file://$MODULE_DIR$/lib" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/com.google.gwt/gwt-servlet/jars/gwt-servlet-2.2.0.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/com.google.inject.extensions/guice-assistedinject/jars/guice-assistedinject-3.0-rc2.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/asm/asm/jars/asm-3.1.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.sonatype.sisu.inject/cglib/jars/cglib-2.2.1-v20090111.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/javax.inject/javax.inject/jars/javax.inject-1.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/com.google.inject/guice/jars/guice-3.0-rc2.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/com.google.gwt.inject/gin/jars/gin-1.5.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -48,6 +64,8 @@
       </library>
     </orderEntry>
     <orderEntry type="module" module-name="devooght-grailsPlugins" />
+    <orderEntry type="module" module-name="gwt-inplacePlugin" exported="" />
+    <orderEntry type="library" name="gwtdeps" level="project" />
   </component>
 </module>
 

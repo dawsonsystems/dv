@@ -176,7 +176,7 @@ Effect.ScopedQueue = Class.create(Enumerable, {
       effect.options.queue : effect.options.queue.position;
 
     switch(position) {
-      case 'front':
+      case 'index.gsp':
         // move unstarted effects after this effect
         this.effects.findAll(function(e){ return e.state=='idle' }).each( function(e) {
             e.startOn  += effect.finishOn;
