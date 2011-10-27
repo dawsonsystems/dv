@@ -3,6 +3,9 @@
     <inherits name="com.google.gwt.user.User"/>
     <inherits name="com.google.gwt.inject.Inject"/>
 
+    <source path="gin"/>
+    <source path="view"/>
+
     <!-- Specify the module entry point class.                   -->
     <entry-point class="uk.co.devooght.stock.client.StockEntryPoint"/>
 </module>
