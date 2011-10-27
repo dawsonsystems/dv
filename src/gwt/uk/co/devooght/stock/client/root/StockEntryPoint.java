@@ -1,4 +1,4 @@
-package uk.co.devooght.stock.client;
+package uk.co.devooght.stock.client.root;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
