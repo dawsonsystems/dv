@@ -12,7 +12,7 @@ if(System.getProperty('build')){
 
 gwt {
   //home="ivy"
-    version="2.3.0"
+    version="2.4.0"
     gin.version="1.5.0"
     parallel=true
   dependencies=['com.extjs:gxt:2.2.0']
