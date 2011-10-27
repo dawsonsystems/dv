@@ -3,13 +3,20 @@ grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
-grails.plugin.location.gwt="/home/david/Development/Source/opensource/grails-gwt"
-
-gwt {
-    version="2.4.0"
-    use.provided.deps=true
+if(System.getProperty('build')){
+	println "Running with installed plugins..."
+} else {
+	println "Running with inline plugins happily..."
+	grails.plugin.location.gwt="/home/david/Development/Source/opensource/grails-gwt"
 }
 
+gwt {
+  //home="ivy"
+    version="2.3.0"
+    gin.version="1.5.0"
+    parallel=true
+  dependencies=['com.extjs:gxt:2.2.0']
+}
 
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
@@ -36,6 +43,5 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
         // runtime 'mysql:mysql-connector-java:5.1.13'
-        provided 'com.google.gwt.inject:gin:1.5.0'
     }
 }
