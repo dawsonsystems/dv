@@ -5,7 +5,8 @@
 
     <source path="gin"/>
     <source path="view"/>
+    <source path="view"/>
 
     <!-- Specify the module entry point class.                   -->
-    <entry-point class="uk.co.devooght.stock.client.StockEntryPoint"/>
+    <entry-point class="uk.co.devooght.stock.client.root.StockEntryPoint"/>
 </module>
