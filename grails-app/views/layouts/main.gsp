@@ -15,8 +15,8 @@
         <g:layoutBody />
         <div id="versionInfo">
              <table>
-               <tr>Build<td></td><td><g:meta name="system.build"/></td></tr>
-               <tr>Branch<td></td><td><g:meta name="system.branch"/></td></tr>
+               <tr><td>Build</td><td><g:meta name="system.build"/></td></tr>
+               <tr><td>Branch</td><td><g:meta name="system.branch"/></td></tr>
              </table>
         </div>
     </body>
