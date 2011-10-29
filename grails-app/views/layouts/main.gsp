@@ -13,5 +13,11 @@
         </div>
         <div id="grailsLogo"><a href="http://grails.org"><img src="${resource(dir:'images',file:'grails_logo.png')}" alt="Grails" border="0" /></a></div>
         <g:layoutBody />
+        <div id="versionInfo">
+             <table>
+               <tr>Build<td></td><td><g:meta name="system.build"/></td></tr>
+               <tr>Branch<td></td><td><g:meta name="system.branch"/></td></tr>
+             </table>
+        </div>
     </body>
 </html>

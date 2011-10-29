@@ -1,0 +1,28 @@
+
+# web application files that are overwritten by "grails upgrade"
+#  cf. GRAILS_HOME/scripts/Upgrade.groovy, target( upgrade )
+
+.classpath
+.project
+.settings
+.directory
+/*.launch
+/*.tmproj
+/ulog
+/mongodb
+# logs
+stacktrace.log
+/test/reports
+/target
+/*.log
+# project release file
+*.war
+*.swp
+*~
+.DS_Store
+*.tch
+access.log
+/web-app/images/deals/*
+*.sh
+*.iml
+*.ipr
