@@ -1,0 +1,24 @@
+.classpath
+.project
+.settings
+.directory
+/*.launch
+/*.tmproj
+/ulog
+# logs
+stacktrace.log
+/test/reports
+/target
+/*.log
+*.war
+*.swp
+*~
+.DS_Store
+*.tch
+access.log
+*.sh
+
+*.iml
+*.ipr
+*.iws
+
