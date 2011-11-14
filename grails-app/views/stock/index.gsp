@@ -12,8 +12,11 @@
   <!-- This script loads your compiled module.   -->
   <!-- If you add any GWT meta tags, they must   -->
   <!-- be added before this line.                -->
-  <!--                                           -->
-  <script type="text/javascript" src="${resource(dir: 'gwt/uk.co.devooght.stock.StockControl', file: 'uk.co.devooght.stock.StockControl.nocache.js')}"></script>
+  <!--                                   -->
+  <link rel='stylesheet' type='text/css' href='${createLinkTo(dir:"resources/css", file:"gxt-all.css")}' />
+  <link rel="stylesheet" type="text/css" href="${createLinkTo(dir:"resources/themes/slate/css", file:"xtheme-slate.css")}" />
+  <script language='javascript' src='${createLinkTo(dir:"resources/flash", file:"swfobject.js")}'></script>
+  <script type="text/javascript" src="${resource(dir: 'stock', file: 'stock.nocache.js')}"></script>
 </head>
 
 <!--                                           -->

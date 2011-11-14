@@ -1,3 +1,6 @@
+import grails.util.Environment
+import org.apache.log4j.ConsoleAppender
+
 // locations to search for config files that get merged into the main config
 // config files can either be Java properties files or ConfigSlurper scripts
 
@@ -67,24 +70,72 @@ environments {
 
 // log4j configuration
 log4j = {
-    // Example of changing the log pattern for the default console
-    // appender:
-    //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
+    debug = true
+    appenders {
+      if (Environment.current != Environment.TEST) {
+        rollingFile name : 'fileAppender',
+                    maxFileSize : "100MB",
+                    append : false,
+                    maxBackupIndex : 9,
+                    file : "devooght.log".toString()
+        file        name : "stack",
+                    append : true,
+                    file : 'devooght.log'
+        console     name : "stderr",
+                    target : ConsoleAppender.SYSTEM_ERR
+      }
+      else {
+        console     name : "stderr",
+                    target : ConsoleAppender.SYSTEM_ERR
+        // removed stack
+//        ['fileAppender'].each {
+//          appender new NullAppender(name: it)
+//        }
+      }
+    }
 
-    error  'org.codehaus.groovy.grails.web.servlet',  //  controllers
-           'org.codehaus.groovy.grails.web.pages', //  GSP
-           'org.codehaus.groovy.grails.web.sitemesh', //  layouts
-           'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-           'org.codehaus.groovy.grails.web.mapping', // URL mapping
-           'org.codehaus.groovy.grails.commons', // core / classloading
-           'org.codehaus.groovy.grails.plugins', // plugins
-           'org.codehaus.groovy.grails.orm.hibernate', // hibernate integration
-           'org.springframework',
-           'org.hibernate',
-           'net.sf.ehcache.hibernate'
+    root {
+      error 'stdout','fileAppender'
 
-    warn   'org.mortbay.log'
+    }
+
+    // Our loggers
+    error stdout:"StackTrace"
+    error 'org.codehaus.groovy.grails.commons', // core / classloading
+          'org.codehaus.groovy.grails.plugins', // plugins
+          'org.codehaus.groovy.grails.orm.hibernate', // hibernate integration
+          'org.springframework'
+    debug "grails.app.bootstrap"
+
+    // For production
+    if (Environment.current == Environment.PRODUCTION) {
+      warn 'org.codehaus.groovy.grails.web.servlet',  //  controllers
+            'org.codehaus.groovy.grails.web.pages', //  GSP
+            'org.codehaus.groovy.grails.web.sitemesh', //  layouts
+            'org.codehaus.groovy.grails."web.mapping.filter', // URL mapping
+            'org.codehaus.groovy.grails."web.mapping' // URL mapping
+
+      info 'com.clicknshout.filters.AccountHydrationFilters'
+    }
+    // Everyone else
+    else {
+      // other artefacts
+      debug   "grails.app",
+	  		  "uk.co.devooght"
+
+      //debug 'com.clicknshout.filters.PublisherFilters'
+	//	debug "grails.app.filter"
+      // part of the frmaework
+      info 'org.codehaus.groovy.grails.web.servlet',  //  controllers
+            'org.codehaus.groovy.grails.web.pages', //  GSP
+            'org.codehaus.groovy.grails.web.sitemesh', //  layouts
+            'org.codehaus.groovy.grails."web.mapping.filter', // URL mapping
+            'org.codehaus.groovy.grails."web.mapping', // URL mapping
+            'com.dawsonsystems.session.SessionTrackerValve'
+    }
 }
+
+facebook.applicationSecret='2d8b1986ae2ba72eb031cf007721ffdb'
+facebook.applicationId='132485503525317'
+
+security.shiro.legacy.filter.enabled = true

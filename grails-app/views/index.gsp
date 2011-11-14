@@ -51,6 +51,7 @@
         </style>
     </head>
     <body>
+
         <div id="nav">
             <div class="homePagePanel">
                 <div class="panelTop"></div>
@@ -96,5 +97,6 @@
                 </ul>
             </div>
         </div>
+
     </body>
 </html>

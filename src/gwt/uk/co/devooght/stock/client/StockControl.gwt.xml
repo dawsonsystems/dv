@@ -1,11 +1,14 @@
-<module>
+<module rename-to="stock">
     <!-- Inherit the core Web Toolkit stuff.                  -->
     <inherits name="com.google.gwt.user.User"/>
     <inherits name="com.google.gwt.inject.Inject"/>
+    <inherits name='com.extjs.gxt.ui.GXT'/>
+    <inherits name='com.extjs.gxt.themes.Themes'/>
 
     <!--<source path="client/gin"/>-->
-    <source path="client/view"/>
-    <source path="client/root"/>
+    <source path="view"/>
+    <source path="root"/>
+    <source path="gin"/>
 
     <!-- Specify the module entry point class.                   -->
     <entry-point class="uk.co.devooght.stock.client.root.StockEntryPoint"/>

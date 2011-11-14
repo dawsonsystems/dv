@@ -12,10 +12,11 @@ if(System.getProperty('build')){
 
 gwt {
   //home="ivy"
-    version="2.3.0"
+    version="2.4.0"
     gin.version="1.5.0"
-    parallel=true
+//    parallel=true
   dependencies=['com.extjs:gxt:2.2.0']
+  output.path="${basedir}/web-app"
 }
 
 grails.project.dependency.resolution = {
@@ -41,7 +42,10 @@ grails.project.dependency.resolution = {
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-
+      compile 'com.google.inject:guice:3.0'
         // runtime 'mysql:mysql-connector-java:5.1.13'
+      compile ('org.openid4java:openid4java:0.9.6') {
+        excludes 'xml-apis', "guice"
+      }
     }
 }

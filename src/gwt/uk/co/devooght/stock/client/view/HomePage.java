@@ -1,18 +1,53 @@
 package uk.co.devooght.stock.client.view;
 
-import com.google.gwt.dom.client.Style;
-import com.google.gwt.user.client.ui.DockLayoutPanel;
-import com.google.gwt.user.client.ui.Label;
+import static uk.co.devooght.stock.client.root.LayoutUtils.*;
 
-public class HomePage extends DockLayoutPanel {
+import com.extjs.gxt.ui.client.GXT;
+import com.extjs.gxt.ui.client.util.Theme;
+import com.extjs.gxt.ui.client.widget.ContentPanel;
+import com.extjs.gxt.ui.client.widget.LayoutContainer;
+import com.extjs.gxt.ui.client.widget.Viewport;
+import com.extjs.gxt.ui.client.widget.layout.AccordionLayout;
+import com.extjs.gxt.ui.client.widget.layout.BorderLayout;
+import com.extjs.gxt.ui.client.widget.layout.FitLayout;
+import com.google.inject.Inject;
 
-    public HomePage() {
-        super(Style.Unit.EM);
+public class HomePage extends Viewport {
 
-        add(new Label("WIBBLE MUNCHER"));
+  private LayoutContainer productTree;
+  private LayoutContainer topBar;
+  private LayoutContainer mainPanel;
 
-    }
+  @Inject
+  public HomePage(ProductTree productTree, MainPanel mainPanel, TopPanel topPanel, SearchPanel searchPanel) {
 
+    this.topBar = topPanel;
+    this.productTree = productTree;
+    this.mainPanel = mainPanel;
 
+    setLayout(new FitLayout());
+
+    ContentPanel layout = new ContentPanel(new FitLayout());
+    layout.getHeader().setText("de Vooght Ltd");
+    layout.getHeader().setTextStyle("wibble");
+
+    LayoutContainer inner = new LayoutContainer();
+    inner.setLayout(new BorderLayout());
+    inner.setStyleAttribute("padding", "5px");
+    layout.add(inner);
+
+    ContentPanel leftbar = new ContentPanel(new AccordionLayout());
+    leftbar.setHeaderVisible(false);
+    productTree.setBorders(false);
+    leftbar.add(productTree);
+    searchPanel.setBorders(false);
+    leftbar.add(searchPanel);
+
+    inner.add(leftbar, split(collapseable(west(percentSize(0.25f)))));
+    inner.add(topBar, north(percentSize(30)));
+    inner.add(mainPanel, centre());
+
+    add(layout);
+  }
 
 }
