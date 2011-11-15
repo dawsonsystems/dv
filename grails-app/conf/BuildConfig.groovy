@@ -12,10 +12,10 @@ if(System.getProperty('build')){
 
 gwt {
   //home="ivy"
-    version="2.4.0"
+    version="2.2.0"
     gin.version="1.5.0"
 //    parallel=true
-  dependencies=['com.extjs:gxt:2.2.0']
+  dependencies=['com.dawsonsystems:gxt:2.2.5-gwt22']
   output.path="${basedir}/web-app"
 }
 
@@ -39,6 +39,7 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
+        mavenRepo "https://github.com/dawsonsystems/mavenrepo/raw/master/snapshots"
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
