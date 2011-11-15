@@ -58,12 +58,18 @@ grails.exceptionresolver.params.exclude = ['password']
 environments {
     production {
         grails.serverURL = "http://www.changeme.com"
+        facebook.applicationSecret='885b021c48db10af1ecf3a677f68f5f6'
+        facebook.applicationId='178108312278602'
     }
     development {
         grails.serverURL = "http://localhost:8080/${appName}"
+        facebook.applicationSecret='2d8b1986ae2ba72eb031cf007721ffdb'
+        facebook.applicationId='132485503525317'
     }
     test {
         grails.serverURL = "http://localhost:8080/${appName}"
+        facebook.applicationSecret='2d8b1986ae2ba72eb031cf007721ffdb'
+        facebook.applicationId='132485503525317'
     }
 
 }
@@ -134,8 +140,5 @@ log4j = {
             'com.dawsonsystems.session.SessionTrackerValve'
     }
 }
-
-facebook.applicationSecret='2d8b1986ae2ba72eb031cf007721ffdb'
-facebook.applicationId='132485503525317'
 
 security.shiro.legacy.filter.enabled = true
