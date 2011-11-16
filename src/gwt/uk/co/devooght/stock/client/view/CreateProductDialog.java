@@ -61,7 +61,7 @@ public class CreateProductDialog extends Dialog {
   }
 
   private Button saveButton() {
-    Button button = new Button();
+    Button button = new Button("Save");
 
     button.addSelectionListener(new SelectionListener<ButtonEvent>() {
       @Override
