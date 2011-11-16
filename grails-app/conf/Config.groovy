@@ -60,6 +60,8 @@ environments {
         grails.serverURL = "http://www.changeme.com"
         facebook.applicationSecret='885b021c48db10af1ecf3a677f68f5f6'
         facebook.applicationId='178108312278602'
+
+        grails.config.locations = ["file:/var/lib/tomcat7/devooght_datasource.groovy"]
     }
     development {
         grails.serverURL = "http://localhost:8080/${appName}"

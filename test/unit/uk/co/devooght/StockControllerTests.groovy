@@ -1,4 +1,4 @@
-package co.uk.devooght
+package uk.co.devooght
 
 import grails.test.*
 
