@@ -1,5 +1,7 @@
 import org.apache.shiro.crypto.hash.Sha256Hash
 import uk.co.devooght.auth.Role
+import grails.util.Environment
+import uk.co.devooght.stock.Product
 
 class BootStrap {
 
@@ -10,7 +12,9 @@ class BootStrap {
       if (!Role.findByName("user")) {
         log.info("Generated User Role")
         Role userRole = new Role(name:"user")
-        userRole.addToPermissions("stock:*")
+
+        //TODO, fix the permissions.
+        userRole.addToPermissions("*:*")
         userRole.save()
       }
 
@@ -19,6 +23,14 @@ class BootStrap {
         Role userRole = new Role(name:"admin")
         userRole.addToPermissions("*:*")
         userRole.save()
+      }
+
+      if (Environment.current == Environment.DEVELOPMENT) {
+
+        Product prod = new Product(costPrice: 13.99, name: "Testing Product", productCode: "12345")
+        prod.save()
+        prod = new Product(costPrice: 14.99, name: "Wibble hello", productCode: "45679")
+        prod.save()
       }
     }
 

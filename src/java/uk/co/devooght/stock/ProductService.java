@@ -9,4 +9,5 @@ import java.util.List;
 @RemoteServiceRelativePath("rpc")
 public interface ProductService extends RemoteService {
   List<ProductDTO> getTree();
+  Boolean saveProduct(ProductDTO productDTO);
 }

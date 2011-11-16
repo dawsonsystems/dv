@@ -16,7 +16,7 @@ gwt {
     gin.version="1.5.0"
 //    parallel=true
   dependencies=['com.dawsonsystems:gxt:2.2.5-gwt22']
-  output.path="${basedir}/web-app"
+  //output.path="${basedir}/web-app"
 }
 
 grails.project.dependency.resolution = {

@@ -1,9 +1,11 @@
 package uk.co.devooght.stock;
 
+import com.extjs.gxt.ui.client.data.BeanModelTag;
+
 import java.math.BigDecimal;
 import java.util.Set;
 
-public class ProductDTO implements grails.plugins.dto.DTO {
+public class ProductDTO implements grails.plugins.dto.DTO, BeanModelTag {
     private static final long serialVersionUID = 1L;
 
     private Long id;

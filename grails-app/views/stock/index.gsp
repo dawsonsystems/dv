@@ -6,7 +6,7 @@
   <!--                                           -->
   <!-- Any title is fine                         -->
   <!--                                           -->
-  <title>Example title (change this!)</title>
+  <title>de Vooght Stock Management</title>
 
   <!--                                           -->
   <!-- This script loads your compiled module.   -->
@@ -16,7 +16,7 @@
   <link rel='stylesheet' type='text/css' href='${createLinkTo(dir:"resources/css", file:"gxt-all.css")}' />
   <link rel="stylesheet" type="text/css" href="${createLinkTo(dir:"resources/themes/slate/css", file:"xtheme-slate.css")}" />
   <script language='javascript' src='${createLinkTo(dir:"resources/flash", file:"swfobject.js")}'></script>
-  <script type="text/javascript" src="${resource(dir: 'stock', file: 'stock.nocache.js')}"></script>
+  <script type="text/javascript" src="${resource(dir: 'gwt/stock', file: 'stock.nocache.js')}"></script>
 </head>
 
 <!--                                           -->

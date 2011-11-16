@@ -5,4 +5,5 @@ import java.util.List;
 
 public interface ProductServiceAsync {
   void getTree(AsyncCallback<List<ProductDTO>> callback);
+  void saveProduct(ProductDTO productDTO, AsyncCallback<Boolean> callback);
 }
