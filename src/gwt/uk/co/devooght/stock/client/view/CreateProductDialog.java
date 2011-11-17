@@ -31,7 +31,7 @@ public class CreateProductDialog extends Dialog {
     this.dispatcher = dispatcher;
     setLayout(new FitLayout());
     setWidth(550);
-    setHeight(500);
+    setHeight(200);
 
     setHeading("Create new Product");
 

@@ -5,6 +5,7 @@ import com.extjs.gxt.ui.client.mvc.AppEvent;
 import com.extjs.gxt.ui.client.mvc.Controller;
 import com.extjs.gxt.ui.client.mvc.Dispatcher;
 import com.extjs.gxt.ui.client.widget.Info;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import uk.co.devooght.stock.ProductDTO;
 import uk.co.devooght.stock.client.root.StockEvents;
@@ -28,6 +29,7 @@ public class ProductTreeController extends Controller {
 
   @Override
   public void handleEvent(AppEvent appEvent) {
+    GWT.log("Refreshing the tree..");
     productTree.load();
   }
 }

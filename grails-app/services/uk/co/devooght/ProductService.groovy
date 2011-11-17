@@ -21,7 +21,7 @@ class ProductService implements uk.co.devooght.stock.ProductService {
     Product product
 
     if (productDTO.id) {
-      product = Product.get(id)
+      product = Product.get(productDTO.id)
     } else {
       product = new Product()
     }

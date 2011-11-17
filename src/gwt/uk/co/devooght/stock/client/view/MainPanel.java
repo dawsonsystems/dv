@@ -1,18 +1,32 @@
 package uk.co.devooght.stock.client.view;
 
+import com.extjs.gxt.ui.client.event.ButtonEvent;
+import com.extjs.gxt.ui.client.event.SelectionListener;
+import com.extjs.gxt.ui.client.mvc.AppEvent;
+import com.extjs.gxt.ui.client.mvc.Dispatcher;
 import com.extjs.gxt.ui.client.widget.*;
+import com.extjs.gxt.ui.client.widget.button.Button;
+import com.extjs.gxt.ui.client.widget.button.ButtonBar;
 import com.extjs.gxt.ui.client.widget.form.FormPanel;
 import com.extjs.gxt.ui.client.widget.form.TextField;
 import com.extjs.gxt.ui.client.widget.layout.CenterLayout;
 import com.extjs.gxt.ui.client.widget.layout.FitLayout;
 import uk.co.devooght.stock.ProductDTO;
+import uk.co.devooght.stock.client.gin.ProductTabFactory;
+import uk.co.devooght.stock.client.root.StockEvents;
+
+import javax.inject.Inject;
 
 public class MainPanel extends LayoutContainer {
 
-  TabPanel tabs;
+  private TabPanel tabs;
+  private Dispatcher dispatcher;
+  private ProductTabFactory productTabFactory;
 
-  public MainPanel() {
-
+  @Inject
+  public MainPanel(Dispatcher dispatcher, ProductTabFactory productTabFactory) {
+    this.productTabFactory = productTabFactory;
+    this.dispatcher = dispatcher;
     setBorders(false);
     setLayout(new FitLayout());
 
@@ -29,7 +43,7 @@ public class MainPanel extends LayoutContainer {
     TabItem item = tabs.getItemByItemId("" + product.getId());
 
     if (item == null) {
-      item = productWindow(product);
+      item = productTabFactory.newProductTab(product);
       tabs.add(item);
     }
 
@@ -42,44 +56,6 @@ public class MainPanel extends LayoutContainer {
     item.setClosable(false);
     item.setLayout(new CenterLayout());
     item.add(new Html("<h1>Welcome to de Vooght Stock management</h1>"));
-    return item;
-  }
-
-  private TabItem productWindow(ProductDTO dto) {
-    TabItem item = new TabItem();
-    item.setId(""+dto.getId());
-    item.setClosable(true);
-
-    item.setText(dto.getName() + "-" + dto.getProductCode());
-
-    //TODO, add the other component views, SKU, Image etc
-
-    //TODO, share this setup with the create dialog
-    FormPanel formPanel = new FormPanel();
-
-    formPanel.setFieldWidth(300);
-    formPanel.setLabelWidth(200);
-
-    TextField<String> name = new TextField<String>();
-    name.setFieldLabel("Name");
-    name.setAllowBlank(false);
-    name.setValue(dto.getName());
-    formPanel.add(name);
-
-    TextField<String> code = new TextField<String>();
-    code.setFieldLabel("Product Code");
-    code.setAllowBlank(false);
-    code.setValue(dto.getProductCode());
-    formPanel.add(code);
-
-    TextField<String> cost = new TextField<String>();
-    cost.setFieldLabel("Cost Price (£)");
-    cost.setAllowBlank(false);
-    cost.setValue(dto.getCostPrice().toString());
-    formPanel.add(cost);
-
-    item.add(formPanel);
-
     return item;
   }
 

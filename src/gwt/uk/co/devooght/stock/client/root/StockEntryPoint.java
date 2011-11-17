@@ -2,6 +2,7 @@ package uk.co.devooght.stock.client.root;
 
 import com.extjs.gxt.themes.client.Slate;
 import com.extjs.gxt.ui.client.GXT;
+import com.extjs.gxt.ui.client.mvc.Dispatcher;
 import com.extjs.gxt.ui.client.util.Theme;
 import com.extjs.gxt.ui.client.util.ThemeManager;
 import com.google.gwt.core.client.EntryPoint;
@@ -25,5 +26,6 @@ public class StockEntryPoint implements EntryPoint {
 
         StockGinjector ginjector = GWT.create(StockGinjector.class);
         RootLayoutPanel.get().add(ginjector.getHomePage());
+      Dispatcher.get().dispatch(StockEvents.START_APP);
     }
 }

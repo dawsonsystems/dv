@@ -1,13 +1,16 @@
 package uk.co.devooght.stock.client.view;
 
 import com.extjs.gxt.ui.client.data.*;
+import com.extjs.gxt.ui.client.event.ButtonEvent;
 import com.extjs.gxt.ui.client.event.SelectionChangedEvent;
 import com.extjs.gxt.ui.client.event.SelectionChangedListener;
+import com.extjs.gxt.ui.client.event.SelectionListener;
 import com.extjs.gxt.ui.client.mvc.AppEvent;
 import com.extjs.gxt.ui.client.mvc.Dispatcher;
 import com.extjs.gxt.ui.client.store.ListStore;
 import com.extjs.gxt.ui.client.store.TreeStore;
 import com.extjs.gxt.ui.client.widget.ContentPanel;
+import com.extjs.gxt.ui.client.widget.button.Button;
 import com.extjs.gxt.ui.client.widget.grid.ColumnConfig;
 import com.extjs.gxt.ui.client.widget.grid.ColumnModel;
 import com.extjs.gxt.ui.client.widget.grid.Grid;
@@ -64,6 +67,20 @@ public class ProductTree extends ContentPanel {
       }
     };
 
+    Button refresh = new Button("Refresh");
+
+    refresh.addSelectionListener(new SelectionListener<ButtonEvent>() {
+      @Override
+      public void componentSelected(ButtonEvent buttonEvent) {
+        load();
+        buttonEvent.preventDefault();
+        buttonEvent.setCancelled(true);
+        buttonEvent.stopEvent();
+      }
+    });
+
+    getHeader().addTool(refresh);
+
     grid = new Grid<ModelData>(new ListStore<ModelData>(new BaseListLoader(treeProxy)), new ColumnModel(columns()));
 
     grid.getSelectionModel().addSelectionChangedListener(new SelectionChangedListener<ModelData>() {
@@ -76,8 +93,6 @@ public class ProductTree extends ContentPanel {
     });
 
     add(grid);
-
-    grid.getStore().getLoader().load();
   }
   private List<ColumnConfig> columns() {
     return Arrays.asList(new ColumnConfig("name", "Name", 200), new ColumnConfig("productCode", "Product Code", 200));
