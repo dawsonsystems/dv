@@ -7,9 +7,11 @@ class Sku {
 
   String stockCode
   BigDecimal price
+  Integer inventoryLevel
 
   static constraints = {
     stockCode blank:false
-    price:nullable:false
+    price nullable:false
+    inventoryLevel nullable:false
   }
 }

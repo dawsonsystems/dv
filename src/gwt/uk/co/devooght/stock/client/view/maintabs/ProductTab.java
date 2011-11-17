@@ -1,30 +1,28 @@
 package uk.co.devooght.stock.client.view.maintabs;
 
+import com.extjs.gxt.ui.client.widget.LayoutContainer;
 import com.extjs.gxt.ui.client.widget.TabItem;
 import com.extjs.gxt.ui.client.mvc.Dispatcher;
-import com.extjs.gxt.ui.client.widget.form.FormPanel;
-import com.extjs.gxt.ui.client.widget.form.TextField;
-import com.extjs.gxt.ui.client.widget.button.ButtonBar;
-import com.extjs.gxt.ui.client.widget.button.Button;
-import com.extjs.gxt.ui.client.event.ButtonEvent;
-import com.extjs.gxt.ui.client.event.SelectionListener;
-import com.extjs.gxt.ui.client.mvc.AppEvent;
+import com.extjs.gxt.ui.client.widget.layout.BorderLayout;
+import com.extjs.gxt.ui.client.widget.layout.FitLayout;
 import uk.co.devooght.stock.ProductDTO;
-import uk.co.devooght.stock.client.root.StockEvents;
+import uk.co.devooght.stock.ProductServiceAsync;
+import uk.co.devooght.stock.client.view.maintabs.product.BasicInfoPanel;
+import uk.co.devooght.stock.client.view.maintabs.product.ImagePanel;
+import uk.co.devooght.stock.client.view.maintabs.product.SkuPanel;
 
-import java.math.BigDecimal;
+import static uk.co.devooght.stock.client.root.LayoutUtils.*;
 
 public class ProductTab extends TabItem {
 
   private Dispatcher dispatcher;
   private ProductDTO product;
-  private TextField<String> name;
-  private TextField<String> code;
-  private TextField<String> cost;
+  private ProductServiceAsync productServiceAsync;
 
-  public ProductTab(Dispatcher dispatcher, ProductDTO productDTO) {
+  public ProductTab(Dispatcher dispatcher, ProductDTO productDTO, ProductServiceAsync productServiceAsync) {
     this.dispatcher = dispatcher;
     this.product = productDTO;
+    this.productServiceAsync = productServiceAsync;
     setup();
   }
 
@@ -36,58 +34,14 @@ public class ProductTab extends TabItem {
 
     //TODO, add the other component views, SKU, Image etc
 
-    //TODO, share this setup with the create dialog
-    final FormPanel formPanel = new FormPanel();
+    setLayout(new FitLayout());
 
-    formPanel.setFieldWidth(300);
-    formPanel.setLabelWidth(200);
+    LayoutContainer body = new LayoutContainer(new BorderLayout());
+    add(body);
 
-    name = new TextField<String>();
-    name.setFieldLabel("Name");
-    name.setAllowBlank(false);
-    name.setValue(product.getName());
-    formPanel.add(name);
-
-    code = new TextField<String>();
-    code.setFieldLabel("Product Code");
-    code.setAllowBlank(false);
-    code.setValue(product.getProductCode());
-    formPanel.add(code);
-
-    cost = new TextField<String>();
-    cost.setFieldLabel("Cost Price (£)");
-    cost.setAllowBlank(false);
-    cost.setValue(product.getCostPrice().toString());
-    formPanel.add(cost);
-
-    ButtonBar buttons = new ButtonBar();
-
-    Button save =new Button("Save");
-
-    save.addSelectionListener(new SelectionListener<ButtonEvent>() {
-      @Override
-      public void componentSelected(ButtonEvent buttonEvent) {
-        if (formPanel.isValid()) {
-          AppEvent event = new AppEvent(StockEvents.SAVE_PRODUCT);
-          event.setData(getProduct());
-          dispatcher.dispatch(event);
-        }
-      }
-    });
-
-    buttons.add(save);
-
-    formPanel.setBottomComponent(buttons);
-
-    add(formPanel);
-  }
-
-  private ProductDTO getProduct() {
-    product.setName(name.getValue());
-    product.setCostPrice(new BigDecimal(cost.getValue()));
-    product.setProductCode(code.getValue());
-
-    return product;
+    body.add(new BasicInfoPanel(dispatcher, product), west(percentSize(0.5f)));
+    body.add(new SkuPanel(dispatcher, product, productServiceAsync), split(east(percentSize(0.5f))));
+    body.add(new ImagePanel(dispatcher, product), split(south(percentSize(300))));
   }
 
 }

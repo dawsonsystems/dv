@@ -9,8 +9,17 @@ public class SkuDTO implements grails.plugins.dto.DTO {
     private BigDecimal price;
     private ProductDTO product;
     private String stockCode;
+    private int inventoryLevel;
 
-    public Long getId() { return id; }
+    public int getInventoryLevel() {
+      return inventoryLevel;
+    }
+
+    public void setInventoryLevel(int inventoryLevel) {
+      this.inventoryLevel = inventoryLevel;
+    }
+
+  public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public BigDecimal getPrice() { return price; }
     public void setPrice(BigDecimal price) { this.price = price; }

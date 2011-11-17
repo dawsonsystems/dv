@@ -3,6 +3,7 @@ package uk.co.devooght
 import uk.co.devooght.stock.Product
 import uk.co.devooght.stock.ProductDTO
 import org.apache.commons.beanutils.BeanUtils
+import uk.co.devooght.stock.SkuDTO
 
 class ProductService implements uk.co.devooght.stock.ProductService {
   static expose = [ 'gwt:uk.co.devooght' ]
@@ -33,5 +34,9 @@ class ProductService implements uk.co.devooght.stock.ProductService {
     product.save()
 
     return true
+  }
+
+  List<SkuDTO> getSkus(ProductDTO productDTO) {
+    Product.get(productDTO.id).skus.toDTO(SkuDTO) as List
   }
 }
