@@ -48,7 +48,6 @@ class ProductService implements uk.co.devooght.stock.ProductService {
     if (sku.id) {
       //update an existing SKU
       Sku existingSku = Sku.get(sku.id)
-      println "SKU PRICE==${sku.price}"
       existingSku.inventoryLevel = sku.inventoryLevel
       existingSku.price = sku.price as BigDecimal
       existingSku.stockCode = sku.stockCode
@@ -57,7 +56,7 @@ class ProductService implements uk.co.devooght.stock.ProductService {
 
     //save a new SKU
     Product product = Product.get(productdto.id)
-
+    println "SKU PRICE==${sku.price}"
     Sku newSku = new Sku(product: product, inventoryLevel:sku.inventoryLevel,
                          price: sku.price as BigDecimal, stockCode: sku.stockCode)
 

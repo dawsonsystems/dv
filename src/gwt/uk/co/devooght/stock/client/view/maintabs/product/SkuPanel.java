@@ -62,6 +62,7 @@ public class SkuPanel extends ContentPanel {
       public void componentSelected(ButtonEvent ce) {
         SkuDTO sku = new SkuDTO();
         sku.setInventoryLevel(0);
+        sku.setPrice(0.00);
         sku.setStockCode(product.getProductCode() + "-1");
 
         BeanModelFactory factory = BeanModelLookup.get().getFactory(ProductDTO.class);
@@ -148,7 +149,11 @@ public class SkuPanel extends ContentPanel {
     grid.getStore().addStoreListener(new StoreListener<ModelData>() {
       public void storeUpdate(StoreEvent<ModelData> se) {
         if (se.getOperation() == Record.RecordUpdate.COMMIT) {
-          SkuDTO sku = ((BeanModel) se.getModel()).getBean();
+
+          SkuDTO sku = new SkuDTO();
+          sku.setPrice((Double) se.getModel().get("price"));
+          sku.setStockCode((String) se.getModel().get("stockCode"));
+          sku.setInventoryLevel((Integer) se.getModel().get("inventoryLevel"));
 
           productServiceAsync.saveSku(product, sku, new AsyncCallback<Boolean>() {
             public void onFailure(Throwable caught) {
