@@ -5,6 +5,7 @@
     <inherits name='com.extjs.gxt.ui.GXT'/>
     <inherits name='com.extjs.gxt.themes.Themes'/>
     <inherits name='grails.plugins.Dto'/>
+    <inherits name='gxt.multiupload.MultiUpload'/>
 
     <inherits name='uk.co.devooght.module'/>
 

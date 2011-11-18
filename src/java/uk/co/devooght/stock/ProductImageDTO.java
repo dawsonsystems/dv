@@ -1,6 +1,8 @@
 package uk.co.devooght.stock;
 
-public class ProductImageDTO implements grails.plugins.dto.DTO {
+import com.extjs.gxt.ui.client.data.BeanModelTag;
+
+public class ProductImageDTO implements grails.plugins.dto.DTO, BeanModelTag {
     private static final long serialVersionUID = 1L;
 
     private Long id;

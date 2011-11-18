@@ -2,6 +2,7 @@ import org.apache.shiro.crypto.hash.Sha256Hash
 import uk.co.devooght.auth.Role
 import grails.util.Environment
 import uk.co.devooght.stock.Product
+import uk.co.devooght.stock.ProductImage
 
 class BootStrap {
 
@@ -49,6 +50,10 @@ class BootStrap {
                       inventoryLevel:99)
 
         prod.save()
+
+
+        new ProductImage(product: prod, location: "/devooght/images/grails_logo.jpg").save()
+        new ProductImage(product: prod, location: "/devooght/images/spinner.gif").save()
 
       }
     }

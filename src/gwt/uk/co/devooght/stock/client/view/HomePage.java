@@ -36,14 +36,14 @@ public class HomePage extends Viewport {
     inner.setStyleAttribute("padding", "5px");
     layout.add(inner);
 
-    ContentPanel leftbar = new ContentPanel(new AccordionLayout());
-    leftbar.setHeaderVisible(false);
-    productTree.setBorders(false);
-    leftbar.add(productTree);
-    searchPanel.setBorders(false);
-    leftbar.add(searchPanel);
+    //ContentPanel leftbar = new ContentPanel(new AccordionLayout());
+    //leftbar.setHeaderVisible(false);
+//    productTree.setBorders(false);
+//    leftbar.add(productTree);
+//    searchPanel.setBorders(false);
+//    leftbar.add(searchPanel);
 
-    inner.add(leftbar, split(collapseable(west(percentSize(0.25f)))));
+    inner.add(productTree, split(collapseable(west(percentSize(0.25f)))));
     inner.add(topBar, north(percentSize(30)));
     inner.add(mainPanel, centre());
 

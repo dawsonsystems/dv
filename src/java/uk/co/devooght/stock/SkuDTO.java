@@ -1,13 +1,14 @@
 package uk.co.devooght.stock;
 
+import com.extjs.gxt.ui.client.data.BeanModelTag;
+
 import java.math.BigDecimal;
 
-public class SkuDTO implements grails.plugins.dto.DTO {
+public class SkuDTO implements grails.plugins.dto.DTO, BeanModelTag {
     private static final long serialVersionUID = 1L;
 
     private Long id;
-    private BigDecimal price;
-    private ProductDTO product;
+    private Double price;
     private String stockCode;
     private int inventoryLevel;
 
@@ -21,10 +22,8 @@ public class SkuDTO implements grails.plugins.dto.DTO {
 
   public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
-    public BigDecimal getPrice() { return price; }
-    public void setPrice(BigDecimal price) { this.price = price; }
-    public ProductDTO getProduct() { return product; }
-    public void setProduct(ProductDTO product) { this.product = product; }
+    public Double getPrice() { return price; }
+    public void setPrice(Double price) { this.price = price; }
     public String getStockCode() { return stockCode; }
     public void setStockCode(String stockCode) { this.stockCode = stockCode; }
 
@@ -33,7 +32,6 @@ public class SkuDTO implements grails.plugins.dto.DTO {
         sb.append("SkuDTO[");
         sb.append("\n\tid: " + this.id);
         sb.append("\n\tprice: " + this.price);
-        sb.append("\n\tproduct: " + this.product);
         sb.append("\n\tstockCode: " + this.stockCode);
         sb.append("]");
         return sb.toString();

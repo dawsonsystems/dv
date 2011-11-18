@@ -41,7 +41,7 @@ public class ProductTab extends TabItem {
 
     body.add(new BasicInfoPanel(dispatcher, product), west(percentSize(0.5f)));
     body.add(new SkuPanel(dispatcher, product, productServiceAsync), split(east(percentSize(0.5f))));
-    body.add(new ImagePanel(dispatcher, product), split(south(percentSize(300))));
+    body.add(new ImagePanel(dispatcher, product, productServiceAsync), split(south(percentSize(300))));
   }
 
 }
