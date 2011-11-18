@@ -62,16 +62,31 @@ environments {
         facebook.applicationId='178108312278602'
 
         grails.config.locations = ["file:/var/lib/tomcat7/devooght_datasource.groovy"]
+
+        images {
+          serverPath = "/productimages"
+          localPath = "/var/www/productimages"
+        }
     }
     development {
         grails.serverURL = "http://localhost:8080/${appName}"
         facebook.applicationSecret='2d8b1986ae2ba72eb031cf007721ffdb'
         facebook.applicationId='132485503525317'
+
+        images {
+          serverPath = "/devooght/images/products"
+          localPath = "/home/david/Development/Source/commercial/dawsonsystems/devooght/web-app/images/products"
+        }
     }
     test {
         grails.serverURL = "http://localhost:8080/${appName}"
         facebook.applicationSecret='2d8b1986ae2ba72eb031cf007721ffdb'
         facebook.applicationId='132485503525317'
+
+        images {
+          serverPath = "/devooght/images/products"
+          localPath = "/home/david/Development/Source/commercial/dawsonsystems/devooght/web-app/images/products"
+        }
     }
 
 }

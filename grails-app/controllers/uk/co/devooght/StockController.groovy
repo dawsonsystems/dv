@@ -7,13 +7,11 @@ import uk.co.devooght.stock.Product
 import uk.co.devooght.stock.ProductImage
 import org.springframework.web.multipart.MultipartFile
 import grails.converters.JSON
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
 class StockController {
 
   def productService
-
-  def serverPath = "/devooght/images/products"
-  def localPath = "/home/david/Development/Source/commercial/dawsonsystems/devooght/web-app/images/products"
 
   @PermissionRequired(type=ShiroBasicPermission, target="itchy", actions="silly")
   def index = {
@@ -21,6 +19,9 @@ class StockController {
   }
 
   def upload = {
+
+    String serverPath = ConfigurationHolder.config.images.serverPath
+    String localPath = ConfigurationHolder.config.images.localPath
 
     MultipartFile img = request.getFile("file")
 
