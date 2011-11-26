@@ -9,10 +9,55 @@ public class SkuDTO implements grails.plugins.dto.DTO, BeanModelTag {
 
     private Long id;
     private Double price;
+    private Double costPrice;
     private String stockCode;
     private int inventoryLevel;
+    private Double weight;
+    private Double length;
+    private Double diameter;
+    private String ringSize;
 
-    public int getInventoryLevel() {
+  public Double getCostPrice() {
+    return costPrice;
+  }
+
+  public void setCostPrice(Double costPrice) {
+    this.costPrice = costPrice;
+  }
+
+  public Double getWeight() {
+    return weight;
+  }
+
+  public void setWeight(Double weight) {
+    this.weight = weight;
+  }
+
+  public Double getLength() {
+    return length;
+  }
+
+  public void setLength(Double length) {
+    this.length = length;
+  }
+
+  public Double getDiameter() {
+    return diameter;
+  }
+
+  public void setDiameter(Double diameter) {
+    this.diameter = diameter;
+  }
+
+  public String getRingSize() {
+    return ringSize;
+  }
+
+  public void setRingSize(String ringSize) {
+    this.ringSize = ringSize;
+  }
+
+  public int getInventoryLevel() {
       return inventoryLevel;
     }
 

@@ -17,7 +17,7 @@ public class BasicInfoPanel extends FormPanel {
 
   private TextField<String> name;
   private TextField<String> code;
-  private TextField<String> cost;
+  private TextField<String> category;
   private ProductDTO product;
 
   public BasicInfoPanel(final Dispatcher dispatcher, ProductDTO product) {
@@ -39,11 +39,11 @@ public class BasicInfoPanel extends FormPanel {
     code.setValue(product.getProductCode());
     add(code);
 
-    cost = new TextField<String>();
-    cost.setFieldLabel("Cost Price (£)");
-    cost.setAllowBlank(false);
-    cost.setValue(product.getCostPrice().toString());
-    add(cost);
+    category = new TextField<String>();
+    category.setFieldLabel("Product Category (Necklace etc)");
+    category.setAllowBlank(false);
+    category.setValue(product.getCategory());
+    add(category);
 
     ButtonBar buttons = new ButtonBar();
 
@@ -62,11 +62,22 @@ public class BasicInfoPanel extends FormPanel {
 
     buttons.add(save);
 
+    Button delete = new Button("Delete Product Entirely");
+
+    delete.addSelectionListener(new SelectionListener<ButtonEvent>() {
+      @Override
+      public void componentSelected(ButtonEvent buttonEvent) {
+        AppEvent event = new AppEvent(StockEvents.DELETE_PRODUCT);
+        event.setData(getProduct());
+        dispatcher.dispatch(event);
+      }
+    });
+    buttons.add(delete);
+
     add(buttons);
   }
   private ProductDTO getProduct() {
     product.setName(name.getValue());
-    product.setCostPrice(new BigDecimal(cost.getValue()));
     product.setProductCode(code.getValue());
 
     return product;

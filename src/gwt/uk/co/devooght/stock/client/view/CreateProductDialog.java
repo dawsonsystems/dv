@@ -23,8 +23,8 @@ public class CreateProductDialog extends Dialog {
   private Dispatcher dispatcher;
 
   private TextField<String> name;
-  private TextField<String> cost;
   private TextField<String> code;
+  private TextField<String> category;
 
   @Inject
   public CreateProductDialog(Dispatcher dispatcher) {
@@ -41,7 +41,7 @@ public class CreateProductDialog extends Dialog {
     formPanel.setLabelWidth(200);
     name = new TextField<String>();
     name.setFieldLabel("Name");
-    name.setAllowBlank(false);
+    name.setAllowBlank(true);
     formPanel.add(name);
 
     code = new TextField<String>();
@@ -49,10 +49,12 @@ public class CreateProductDialog extends Dialog {
     code.setAllowBlank(false);
     formPanel.add(code);
 
-    cost = new TextField<String>();
-    cost.setFieldLabel("Cost Price (£)");
-    cost.setAllowBlank(false);
-    formPanel.add(cost);
+    category = new TextField<String>();
+    category.setFieldLabel("Product Category (Necklace etc)");
+    category.setAllowBlank(false);
+    formPanel.add(category);
+
+    //TODO, add some SKU information to allow streamlines product/ sku creation
 
     add(formPanel);
 
@@ -88,8 +90,7 @@ public class CreateProductDialog extends Dialog {
 
     dto.setProductCode(code.getValue());
     dto.setName(name.getValue());
-    //TODO, add some validation/ error handling
-    dto.setCostPrice(new BigDecimal(cost.getValue()));
+    dto.setCategory(category.getValue());
 
     return dto;
   }

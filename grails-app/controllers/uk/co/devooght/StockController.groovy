@@ -13,7 +13,6 @@ class StockController {
 
   def productService
 
-  @PermissionRequired(type=ShiroBasicPermission, target="itchy", actions="silly")
   def index = {
 
   }

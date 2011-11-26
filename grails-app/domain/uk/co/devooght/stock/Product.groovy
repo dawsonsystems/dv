@@ -4,11 +4,13 @@ class Product {
 
   String name
   String productCode
-
-  BigDecimal costPrice
+  String category
 
   static hasMany = [skus: Sku]
 
   static constraints = {
+    productCode blank:false
+    name nullable:true
+    category blank:false
   }
 }

@@ -153,7 +153,13 @@ public class SkuPanel extends ContentPanel {
           SkuDTO sku = new SkuDTO();
           sku.setPrice((Double) se.getModel().get("price"));
           sku.setStockCode((String) se.getModel().get("stockCode"));
+          sku.setCostPrice((Double) se.getModel().get("costPrice"));
           sku.setInventoryLevel((Integer) se.getModel().get("inventoryLevel"));
+
+          sku.setWeight((Double) se.getModel().get("weight"));
+          sku.setDiameter((Double) se.getModel().get("diameter"));
+          sku.setLength((Double) se.getModel().get("length"));
+          sku.setRingSize((String) se.getModel().get("ringSize"));
 
           productServiceAsync.saveSku(product, sku, new AsyncCallback<Boolean>() {
             public void onFailure(Throwable caught) {
@@ -174,20 +180,35 @@ public class SkuPanel extends ContentPanel {
   }
 
   private List<ColumnConfig> columns() {
-
-    ColumnConfig stockCode = new ColumnConfig("stockCode", "Stock Code", 200);
-    stockCode.setEditor(new CellEditor(new TextField()));
-    ColumnConfig price = new ColumnConfig("price", "Price", 200);
-    price.setEditor(new CellEditor(new NumberField()));
-    ColumnConfig inventory = new ColumnConfig("inventoryLevel", "Inventory", 200);
-
+    return Arrays.asList(
+            textColumn("stockCode", "Stock Code", 100),
+            numberColumn("costPrice", "Cost Price", 60),
+            numberColumn("price", "Price", 60),
+            integerColumn("inventoryLevel", "Inventory", 60),
+            numberColumn("weight", "Weight", 60),
+            numberColumn("length", "Length", 60),
+            numberColumn("diameter", "Diameter", 60),
+            textColumn("ringSize", "Ring Size", 60)
+            );
+  }
+  private ColumnConfig integerColumn(String name, String title, int width) {
+    ColumnConfig config = new ColumnConfig(name, title, width);
     NumberField field = new NumberField();
     field.setPropertyEditorType(Integer.class);
-
-    inventory.setEditor(new CellEditor(field));
-
-    return Arrays.asList(stockCode, price, inventory);
+    config.setEditor(new CellEditor(field));
+    return config;
   }
+  private ColumnConfig numberColumn(String name, String title, int width) {
+    ColumnConfig config = new ColumnConfig(name, title, width);
+    config.setEditor(new CellEditor(new NumberField()));
+    return config;
+  }
+  private ColumnConfig textColumn(String name, String title, int width) {
+    ColumnConfig config = new ColumnConfig(name, title, width);
+    config.setEditor(new CellEditor(new TextField()));
+    return config;
+  }
+
   public void load() {
     grid.getStore().getLoader().load();
   }

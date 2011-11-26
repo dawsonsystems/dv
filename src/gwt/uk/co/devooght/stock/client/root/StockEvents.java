@@ -12,6 +12,7 @@ public class StockEvents {
   public static EventType CREATE_PRODUCT = new EventType();
   //user is saving a product, either new or updating.
   public static EventType SAVE_PRODUCT = new EventType();
+  public static EventType DELETE_PRODUCT = new EventType();
 
   public static EventType CREATE_COLLECTION = new EventType();
 

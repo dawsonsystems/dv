@@ -31,6 +31,7 @@ public class StockModule extends AbstractGinModule {
       bind(MainPanelController.class).asEagerSingleton();
       bind(CreateProductController.class).asEagerSingleton();
       bind(SaveProductController.class).asEagerSingleton();
+      bind(DeleteProductController.class).asEagerSingleton();
       bind(UploadImageController.class).asEagerSingleton();
     }
 

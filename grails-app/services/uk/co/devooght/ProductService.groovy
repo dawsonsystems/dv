@@ -20,6 +20,24 @@ class ProductService implements uk.co.devooght.stock.ProductService {
   List<ProductDTO> getTree() {
     return Product.list(['order':"name"]).toDTO(ProductDTO)
   }
+  Boolean removeProduct(ProductDTO productDTO) {
+    Product product
+
+    if (productDTO.id) {
+      product = Product.get(productDTO.id)
+    } else {
+      throw new RuntimeException("Unable to remove product, does not exist")
+    }
+    ProductImage.findAllByProduct(product).each {
+      it.delete()
+    }
+    Sku.findAllByProduct(product).each {
+      it.delete()
+    }
+
+    product.delete()
+    return true
+  }
   Boolean saveProduct(ProductDTO productDTO) {
 
     Product product
@@ -32,11 +50,15 @@ class ProductService implements uk.co.devooght.stock.ProductService {
 
     product.name = productDTO.name
     product.productCode = productDTO.productCode
-    product.costPrice = productDTO.costPrice
+    product.category = productDTO.category
 
-    product.save()
-
-    return true
+    if (product.save()) {
+      return true
+    }
+    product.errors.allErrors.each {
+      println it
+    }
+    return false
   }
 
   List<SkuDTO> getSkus(ProductDTO productDTO) {
@@ -50,15 +72,26 @@ class ProductService implements uk.co.devooght.stock.ProductService {
       Sku existingSku = Sku.get(sku.id)
       existingSku.inventoryLevel = sku.inventoryLevel
       existingSku.price = sku.price as BigDecimal
+      existingSku.costPrice = sku.costPrice as BigDecimal
       existingSku.stockCode = sku.stockCode
+      existingSku.weight = sku.weight as BigDecimal
+      existingSku.length = sku.length as BigDecimal
+      existingSku.diameter = sku.diameter as BigDecimal
+      existingSku.ringSize = sku.ringSize
       return true
     }
 
     //save a new SKU
     Product product = Product.get(productdto.id)
-    println "SKU PRICE==${sku.price}"
+    println "SKU PRICE==${sku.costPrice}"
     Sku newSku = new Sku(product: product, inventoryLevel:sku.inventoryLevel,
-                         price: sku.price as BigDecimal, stockCode: sku.stockCode)
+                         price: sku.price as BigDecimal,
+                        stockCode: sku.stockCode,
+                        costPrice:sku.costPrice as BigDecimal,
+                        weight:sku.weight as BigDecimal,
+                        length:sku.length as BigDecimal,
+                        diameter:sku.diameter as BigDecimal,
+                        ringSize:sku.ringSize)
 
     if (!newSku.save()) {
       newSku.errors.allErrors.each {

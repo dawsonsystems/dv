@@ -9,15 +9,21 @@ public class ProductDTO implements grails.plugins.dto.DTO, BeanModelTag {
     private static final long serialVersionUID = 1L;
 
     private Long id;
-    private BigDecimal costPrice;
     private String name;
     private String productCode;
+    private String category;
     private Set<SkuDTO> skus;
 
-    public Long getId() { return id; }
+    public String getCategory() {
+      return category;
+    }
+
+    public void setCategory(String category) {
+      this.category = category;
+    }
+
+  public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
-    public BigDecimal getCostPrice() { return costPrice; }
-    public void setCostPrice(BigDecimal costPrice) { this.costPrice = costPrice; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
     public String getProductCode() { return productCode; }
@@ -29,7 +35,6 @@ public class ProductDTO implements grails.plugins.dto.DTO, BeanModelTag {
         StringBuilder sb = new StringBuilder();
         sb.append("ProductDTO[");
         sb.append("\n\tid: " + this.id);
-        sb.append("\n\tcostPrice: " + this.costPrice);
         sb.append("\n\tname: " + this.name);
         sb.append("\n\tproductCode: " + this.productCode);
         sb.append("\n\tskus: " + this.skus);

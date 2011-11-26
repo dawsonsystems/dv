@@ -28,25 +28,29 @@ class BootStrap {
 
       if (Environment.current == Environment.DEVELOPMENT) {
 
-        Product prod = new Product(costPrice: 13.99, name: "Testing Product", productCode: "12345")
+        Product prod = new Product(name: "Testing Product", productCode: "12345", category: "ring")
         prod.save()
 
         prod.addToSkus(stockCode:"12345-stock",
                       price:45.99,
+                      costPrice:13.99,
                       inventoryLevel:2)
 
         prod.addToSkus(stockCode:"12345-stock2",
                       price:47.99,
+                      costPrice:13.99,
                       inventoryLevel:4)
 
-        prod = new Product(costPrice: 14.99, name: "Wibble hello", productCode: "45679")
+        prod = new Product(name: "Wibble hello", productCode: "45679", category: "necklace")
 
         prod.addToSkus(stockCode:"igglestock",
                       price:12.99,
+                      costPrice:13.99,
                       inventoryLevel:0)
 
         prod.addToSkus(stockCode:"igglestock13",
                       price:14.99,
+                      costPrice:13.99,
                       inventoryLevel:99)
 
         prod.save()
