@@ -1,7 +1,6 @@
 package uk.co.devooght.auth
 
 class Logon {
-
   String identifier
   Profile profile
   static belongsTo = [Profile]

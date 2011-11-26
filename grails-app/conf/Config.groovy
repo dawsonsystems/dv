@@ -159,3 +159,4 @@ log4j = {
 }
 
 security.shiro.legacy.filter.enabled = true
+elasticSearch.client.mode='local'

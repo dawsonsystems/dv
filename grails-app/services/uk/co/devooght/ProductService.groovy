@@ -2,11 +2,11 @@ package uk.co.devooght
 
 import uk.co.devooght.stock.Product
 import uk.co.devooght.stock.ProductDTO
-import org.apache.commons.beanutils.BeanUtils
 import uk.co.devooght.stock.SkuDTO
 import uk.co.devooght.stock.Sku
 import uk.co.devooght.stock.ProductImageDTO
 import uk.co.devooght.stock.ProductImage
+import org.apache.commons.lang3.text.WordUtils
 
 class ProductService implements uk.co.devooght.stock.ProductService {
   static expose = [ 'gwt:uk.co.devooght' ]
@@ -29,13 +29,13 @@ class ProductService implements uk.co.devooght.stock.ProductService {
       throw new RuntimeException("Unable to remove product, does not exist")
     }
     ProductImage.findAllByProduct(product).each {
-      it.delete()
+      it.delete(flush:true)
     }
     Sku.findAllByProduct(product).each {
-      it.delete()
+      it.delete(flush:true)
     }
 
-    product.delete()
+    product.delete(flush:true)
     return true
   }
   Boolean saveProduct(ProductDTO productDTO) {
@@ -48,17 +48,38 @@ class ProductService implements uk.co.devooght.stock.ProductService {
       product = new Product()
     }
 
-    product.name = productDTO.name
+    product.name = generateProductName(productDTO)
     product.productCode = productDTO.productCode
     product.category = productDTO.category
+    product.shape = productDTO.shape
+    product.pattern = productDTO.pattern
+    product.altMaterial = productDTO.altMaterial
 
-    if (product.save()) {
+    if (product.save(flush:true)) {
       return true
     }
     product.errors.allErrors.each {
       println it
     }
     return false
+  }
+
+  private String generateProductName(ProductDTO product) {
+    def name = "filigree silver"
+    if (product.pattern) {
+      name += " ${product.pattern}"
+    }
+    if (product.shape) {
+      name+= " ${product.shape} shaped"
+    }
+    if (product.category) {
+      name += " ${product.category}"
+    }
+    if (product.altMaterial) {
+      name += " with ${product.altMaterial}"
+    }
+
+    return WordUtils.capitalizeFully(name)
   }
 
   List<SkuDTO> getSkus(ProductDTO productDTO) {
@@ -83,7 +104,6 @@ class ProductService implements uk.co.devooght.stock.ProductService {
 
     //save a new SKU
     Product product = Product.get(productdto.id)
-    println "SKU PRICE==${sku.costPrice}"
     Sku newSku = new Sku(product: product, inventoryLevel:sku.inventoryLevel,
                          price: sku.price as BigDecimal,
                         stockCode: sku.stockCode,
@@ -93,7 +113,7 @@ class ProductService implements uk.co.devooght.stock.ProductService {
                         diameter:sku.diameter as BigDecimal,
                         ringSize:sku.ringSize)
 
-    if (!newSku.save()) {
+    if (!newSku.save(flush:true)) {
       newSku.errors.allErrors.each {
         println it
       }

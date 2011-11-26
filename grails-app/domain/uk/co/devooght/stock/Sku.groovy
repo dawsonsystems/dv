@@ -16,9 +16,11 @@ class Sku {
   BigDecimal diameter
   String ringSize
 
+  static searchable = true
+
   static constraints = {
     costPrice(nullable:false)
-    stockCode blank:false
+    stockCode blank:false, unique: true
     price nullable:true
     inventoryLevel nullable:false
 

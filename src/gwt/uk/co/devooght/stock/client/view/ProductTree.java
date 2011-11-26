@@ -41,7 +41,7 @@ public class ProductTree extends ContentPanel {
 
     setLayout(new FitLayout());
 
-    setHeading("Collections and Products");
+    setHeading("Products");
 
     setBorders(true);
 

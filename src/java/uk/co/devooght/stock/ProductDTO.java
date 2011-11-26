@@ -12,9 +12,36 @@ public class ProductDTO implements grails.plugins.dto.DTO, BeanModelTag {
     private String name;
     private String productCode;
     private String category;
+    private String pattern;
+    private String shape;
     private Set<SkuDTO> skus;
+    private String altMaterial;
 
-    public String getCategory() {
+  public String getAltMaterial() {
+    return altMaterial;
+  }
+
+  public void setAltMaterial(String altMaterial) {
+    this.altMaterial = altMaterial;
+  }
+
+  public String getPattern() {
+    return pattern;
+  }
+
+  public void setPattern(String pattern) {
+    this.pattern = pattern;
+  }
+
+  public String getShape() {
+    return shape;
+  }
+
+  public void setShape(String shape) {
+    this.shape = shape;
+  }
+
+  public String getCategory() {
       return category;
     }
 

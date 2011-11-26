@@ -15,9 +15,11 @@ import java.math.BigDecimal;
 
 public class BasicInfoPanel extends FormPanel {
 
-  private TextField<String> name;
   private TextField<String> code;
   private TextField<String> category;
+  private TextField<String> shape;
+  private TextField<String> pattern;
+  private TextField<String> altMaterial;
   private ProductDTO product;
 
   public BasicInfoPanel(final Dispatcher dispatcher, ProductDTO product) {
@@ -27,12 +29,6 @@ public class BasicInfoPanel extends FormPanel {
 
      //TODO, share this setup with the create dialog
     setHeading("Product Information");
-    name = new TextField<String>();
-    name.setFieldLabel("Name");
-    name.setAllowBlank(false);
-    name.setValue(product.getName());
-    add(name);
-
     code = new TextField<String>();
     code.setFieldLabel("Product Code");
     code.setAllowBlank(false);
@@ -44,6 +40,24 @@ public class BasicInfoPanel extends FormPanel {
     category.setAllowBlank(false);
     category.setValue(product.getCategory());
     add(category);
+
+    pattern = new TextField<String>();
+    pattern.setFieldLabel("Jewellery Pattern");
+    pattern.setAllowBlank(true);
+    pattern.setValue(product.getPattern());
+    add(pattern);
+
+    shape = new TextField<String>();
+    shape.setFieldLabel("Jewellery Shape");
+    shape.setAllowBlank(true);
+    shape.setValue(product.getShape());
+    add(shape);
+
+    altMaterial = new TextField<String>();
+    altMaterial.setFieldLabel("Alternate Material (eg, turquoise)");
+    altMaterial.setAllowBlank(true);
+    altMaterial.setValue(product.getAltMaterial());
+    add(altMaterial);
 
     ButtonBar buttons = new ButtonBar();
 
@@ -77,9 +91,10 @@ public class BasicInfoPanel extends FormPanel {
     add(buttons);
   }
   private ProductDTO getProduct() {
-    product.setName(name.getValue());
     product.setProductCode(code.getValue());
-
+    product.setPattern(pattern.getValue());
+    product.setShape(shape.getValue());
+    product.setAltMaterial(altMaterial.getValue());
     return product;
   }
 }

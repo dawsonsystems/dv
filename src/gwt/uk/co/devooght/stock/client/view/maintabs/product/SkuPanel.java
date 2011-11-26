@@ -151,6 +151,7 @@ public class SkuPanel extends ContentPanel {
         if (se.getOperation() == Record.RecordUpdate.COMMIT) {
 
           SkuDTO sku = new SkuDTO();
+          sku.setId((Long) se.getModel().get("id"));
           sku.setPrice((Double) se.getModel().get("price"));
           sku.setStockCode((String) se.getModel().get("stockCode"));
           sku.setCostPrice((Double) se.getModel().get("costPrice"));
