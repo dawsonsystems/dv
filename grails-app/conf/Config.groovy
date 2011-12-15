@@ -32,7 +32,7 @@ grails.mime.types = [ html: ['text/html','application/xhtml+xml'],
 
 // URL Mapping Cache Max Size, defaults to 5000
 //grails.urlmapping.cache.maxsize = 1000
-
+grails.mime.file.extensions = false
 // The default codec used to encode data with ${}
 grails.views.default.codec = "none" // none, html, base64
 grails.views.gsp.encoding = "UTF-8"
@@ -158,5 +158,11 @@ log4j = {
     }
 }
 
+grails.app.context = '/devooght'
 security.shiro.legacy.filter.enabled = true
-elasticSearch.client.mode='local'
+
+weceem.content.prefix = 'c'
+weceem.create.default.space = true
+weceem.default.space.template = "classpath:/shop-space.zip"
+
+weceem.upload.dir = 'file:///var/weceem/devooght/uploads'

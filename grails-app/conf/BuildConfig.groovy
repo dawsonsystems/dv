@@ -50,4 +50,7 @@ grails.project.dependency.resolution = {
         excludes 'xml-apis', "guice"
       }
     }
+    plugins {
+      ":weceem:1.1.1"
+    }
 }
