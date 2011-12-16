@@ -10,6 +10,20 @@ class Product {
   String altMaterial
 
   static hasMany = [skus: Sku]
+  static transients = ['multiSku']
+
+  //for things like rings etc
+  boolean isMultiSku() {
+    false
+  }
+
+  Sku bestSku() {
+    if (skus) {
+      return skus.iterator().next()
+    }
+    return null
+  }
+
   static searchable = {
     skus component:true
   }

@@ -5,7 +5,7 @@ import uk.co.devooght.stock.Sku
 class Item {
 
   Sku sku
-  Integer quantity
+  Integer quantity = 0
   BigDecimal price
   BigDecimal lineTotal
 

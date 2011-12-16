@@ -9,6 +9,7 @@ class UrlMappings {
     "/basket/remove"(controller:"basket", action:"remove")
     "/basket/update"(controller:"basket", action:"update")
     "/basket/clear"(controller:"basket", action:"clear")
+    "/basket/checkout"(controller:"basket", action:"checkout")
     "/stock"(controller:"stock", action:"index")
     "/stock/upload"(controller:"stock", action:"upload")
 
